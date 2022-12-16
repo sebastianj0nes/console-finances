@@ -86,3 +86,55 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+console.log("Financial Analysis");
+// Analysing records with Javascript 
+// to calculate the following;
+
+// TOTAL NUMBERS INCLUDED IN DATASET
+
+// Create variable to hold number of months
+var numberMonths = 0;
+
+// Run for loop to run through all data
+for (data in finances){
+    // As each individual array holds a month value - 
+    // we can just count number of arrays in matrix
+    // So increase numberMonths value by 1 
+    numberMonths++;
+}
+// Log to console number of months in data
+console.log("There are " + numberMonths + " months in total in the dataset");
+
+// NET TOTAL AMOUNT OF PROFIT/LOSS OVER ENTIRE PERIOD
+
+// Initialise variable to hold value of total profit generated
+var totalProfit = 0;
+
+for (profit in finances){
+    totalProfit = totalProfit + (finances[profit][1]);
+}
+console.log("Total profit for entire period is $" + totalProfit);
+
+// Average of changes in profit/loss over entire period
+var averageChange = 0;
+
+averageChange = totalProfit/numberMonths;
+console.log("The average change was $" +averageChange.toFixed(2));
+
+// Greatest increase in profits over entire period
+// Initialise variable to hold largest value - Start at first number
+var largestProfit = finances[0][1];
+
+// For loop - run through all data in array
+for (data in finances){
+    // If data being looped through is higher than current largest profit
+    if (finances[data][1] > largestProfit){
+        // Replace old largest profit with new one
+        largestProfit = finances[data][1];
+    }
+}
+console.log("The greatest increase in profit was $"+largestProfit + " in "+finances[data][0]);
+
+
+// Greatest decrease in profits over entire period
