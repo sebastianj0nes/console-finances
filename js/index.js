@@ -87,13 +87,15 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log("Financial Analysis");
+console.log("Financial Analysis:");
 // Analysing records with Javascript 
 // to calculate the following;
 
-// TOTAL NUMBERS INCLUDED IN DATASET
 
-// Create variable to hold number of months
+// TOTAL NUMBERS OF MONTH INCLUDED IN DATASET
+
+
+// Create variable to hold number of months outside loop
 var numberMonths = 0;
 
 // Run for loop to run through all data
@@ -103,28 +105,44 @@ for (data in finances){
     // So increase numberMonths value by 1 
     numberMonths++;
 }
-// Log to console number of months in data
-console.log("There are " + numberMonths + " months in total in the dataset");
+// Log to console number of months
+console.log("There are " + numberMonths + " months");
+
 
 // NET TOTAL AMOUNT OF PROFIT/LOSS OVER ENTIRE PERIOD
+
 
 // Initialise variable to hold value of total profit generated
 var totalProfit = 0;
 
+// For loop - run through all data
 for (profit in finances){
+    // Add profit per month to total profit
     totalProfit = totalProfit + (finances[profit][1]);
 }
+// Log to console total profit
 console.log("Total profit for entire period is $" + totalProfit);
 
-// Average of changes in profit/loss over entire period
+
+// AVERAGE OF CHANGES IN PROFIT/LOSS OVER ENTIRE PERIOD
+
+
+// Initialise variable 
 var averageChange = 0;
 
+// Take average by dividing total profit by number of months
 averageChange = totalProfit/numberMonths;
 console.log("The average change was $" +averageChange.toFixed(2));
 
-// Greatest increase in profits over entire period
-// Initialise variable to hold largest value - Start at first number
+
+// GREATEST INCREASE IN PROFITS OVER ENTIRE PERIOD
+
+
+// Initialise variable to hold largest profit - Start at first number
 var largestProfit = finances[0][1];
+
+// Initialise variable to hold date of largest profit
+var timeProfit = 0;
 
 // For loop - run through all data in array
 for (data in finances){
@@ -132,9 +150,25 @@ for (data in finances){
     if (finances[data][1] > largestProfit){
         // Replace old largest profit with new one
         largestProfit = finances[data][1];
+        // Store date of largest profit
+        timeProfit = finances[data][0];
     }
 }
-console.log("The greatest increase in profit was $"+largestProfit + " in "+finances[data][0]);
+console.log("The greatest increase in profit was $"+ largestProfit + " in "+ timeProfit);
 
 
-// Greatest decrease in profits over entire period
+// GREATEST DECREASE IN LOSSES (date and amount) OVER ENTIRE PERIOD
+
+
+// Code will run similar to "largest profit"
+// Initialise variable to hold largest loss - start at first
+var largestLoss = finances[0][1];
+
+
+for (data in finances){
+    if (finances[data][1] < largestLoss){
+        largestLoss = finances[data][1];
+        timeProfit = finances[data][0];
+    }
+}
+console.log("The greatest decrease in profits was $"+ largestLoss + " in " + timeProfit);
