@@ -16,7 +16,7 @@ MIT License. Refer to repository.
 No installation.
 
 ## Usage
-Run the website
+Run the website, right click, hit inspect and then open console.
 
 ## Credits
 No collaborators.
